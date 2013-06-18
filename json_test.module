@@ -17,9 +17,9 @@ function json_test_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['json_test.json'] = array(
+  $items['json_test_data'] = array(
     'title' => 'Serving a JSON test payload.',
-    'page callback' => 'json_test_page_json',
+    'page callback' => 'json_test_data',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
@@ -37,7 +37,7 @@ function json_test_page() {
   $page = array();
 
   $page['#attached']['js'] = array(
-    drupal_get_path('module', 'json_test') . '/json_test_data',
+    drupal_get_path('module', 'json_test') . '/json_test.js',
   );
 
   $page['intro'] = array(
