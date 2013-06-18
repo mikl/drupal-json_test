@@ -37,7 +37,7 @@ function json_test_page() {
   $page = array();
 
   $page['#attached']['js'] = array(
-    drupal_get_path('module', 'json_test') . '/json_test.js',
+    drupal_get_path('module', 'json_test') . '/json_test_data',
   );
 
   $page['intro'] = array(
@@ -62,6 +62,6 @@ function json_test_page() {
  * Returns an object with the string Iñtërnâtiônàlizætiøn as the value 
  * of the key “test”.
  */
-function json_test_page_json() {
+function json_test_data() {
   return drupal_json_output(array('test' => 'Iñtërnâtiônàlizætiøn'));
 }

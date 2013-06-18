@@ -8,7 +8,7 @@ jQuery(function($) {
 
   var placeholder = $('.json-test-placeholder');
 
-  $.getJSON(Drupal.settings.basePath + 'json_test.json', function (response) {
+  $.getJSON(Drupal.settings.basePath + 'json_test_data', function (response) {
     if (response && response.test) {
       placeholder.text(response.test);
     }
