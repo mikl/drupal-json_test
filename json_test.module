@@ -1,0 +1,67 @@
+<?php
+/**
+ * @file
+ * JSON test module.
+ *
+ * See https://drupal.org/node/341588 for details.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function json_test_menu() {
+  $items['json_test'] = array(
+    'title' => 'JSON test page',
+    'page callback' => 'json_test_page',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['json_test.json'] = array(
+    'title' => 'Serving a JSON test payload.',
+    'page callback' => 'json_test_page_json',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * JSON test page.
+ *
+ * Display some markup, and load some JavaScript to test whether JSON 
+ * encoding works right.
+ */
+function json_test_page() {
+  $page = array();
+
+  $page['#attached']['js'] = array(
+    drupal_get_path('module', 'json_test') . '/json_test.js',
+  );
+
+  $page['intro'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'h3',
+    '#value' => 'Internationalization test string is:',
+  );
+
+  $page['placeholder'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'h4',
+    '#value' => 'Loading…',
+    '#attributes' => array('class' => 'json-test-placeholder'),
+  );
+
+  return $page;
+}
+
+/**
+ * Test JSON callback.
+ *
+ * Returns an object with the string Iñtërnâtiônàlizætiøn as the value 
+ * of the key “test”.
+ */
+function json_test_page_json() {
+  return drupal_json_output(array('test' => 'Iñtërnâtiônàlizætiøn'));
+}

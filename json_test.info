@@ -1,0 +1,3 @@
+name = JSON test
+description = Demonstration of JSON encoding.
+core = 7.x
