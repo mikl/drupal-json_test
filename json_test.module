@@ -20,7 +20,7 @@ function json_test_menu() {
   $items['json_test.json'] = array(
     'title' => 'Serving a JSON test payload.',
     'page callback' => 'json_test_page_json',
-    'access arguments' => array('access content'),
+    'access callback' => TRUE,
     'type' => MENU_CALLBACK,
   );
 
